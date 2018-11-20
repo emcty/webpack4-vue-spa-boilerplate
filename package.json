@@ -1,0 +1,51 @@
+{
+  "name": "webpack4-vue-spa-bolierplate",
+  "version": "1.0.0-beta",
+  "description": "一个基于webpack4,vue的spa的脚本构建",
+  "main": "index.js",
+  "scripts": {
+    "build:vendor": "cross-env NODE_ENV=development webpack --config build/webpack.vendor.config.js --progress --hide-modules --display-optimization-bailout",
+    "dev": "webpack-dev-server --config build/webpack.dev.server.js",
+    "build": "webpack --config build/webpack.prod.config.js --hide-modules --display-optimization-bailout"
+  },
+  "keywords": [],
+  "author": "dinglei",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-component": "^1.1.1",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "custom-webpack-named-plugin": "0.0.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.3.1",
+    "mini-css-extract-plugin": "^0.4.1",
+    "minimist": "^1.2.0",
+    "nodemon": "^1.18.4",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-loader": "^3.0.0",
+    "precss": "^3.1.2",
+    "style-loader": "^0.22.1",
+    "url-loader": "^1.1.1",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "element-ui": "^2.4.8",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1"
+  }
+}

@@ -1,0 +1,124 @@
+[v-cloak] {
+    display: none;
+}
+html,body,.accRentIncome{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+}
+/*匹配详情*/
+
+.accRentIncome{
+    display: flex;
+    flex-direction:column;
+    padding:376px 40px 0;
+    .rentBox{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 376px;
+        background: #fff;
+        overflow-y:hidden;
+    }
+    .rentDiv{
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        width: 670px;
+        height: 306px;
+        background: #F3F5F9;
+        border-radius: 10px;
+        padding: 48px 0 48px 48px;
+        color: #ed2c50;
+        .rentMoney{
+            font-size: 56px;
+        }
+        .rentText{
+            font-size: 24px;
+            color: #b3bbc5;
+            margin-top: 10px;
+        }
+        ul{
+            position: relative;
+            display: flex;
+            justify-content:flex-start;
+            align-items:center;
+            margin-top: 50px;
+            .weekMoney{
+                font-size: 36px;
+            }
+            li:nth-child(2){
+                margin-left: 132px;
+            }
+            .line{
+                position: absolute;
+                top: 10px;
+                left: 280px;
+                width: 1px;
+                height: 60px;
+                background: #E8EBF2
+            }
+        }
+    }
+    .rentScroll{
+        width: 100%;
+        flex:1;
+        overflow-y: scroll;
+    }
+    .rentScroll::-webkit-scrollbar {display:none}
+    .rentList{
+        width: 100%;
+        height: 130px;
+        border-bottom: 1px solid #f0f2f7;
+        padding: 30px 10px 0;
+        li{
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+            &:nth-child(1){
+                font-size: 30px;
+                color: #233251;
+            }
+            &:nth-child(2){
+                margin-top: 18px;
+                font-size: 26px;
+                color: #9BA5B2;
+            }
+        }
+    }
+}
+/*分页*/
+.loading{
+    width: 100%;
+    height:50px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 30px;
+}
+#loading{
+    width: 100%;
+    height: 50px;
+}
+.loading img{
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+.loading p, .loadingP {
+    text-align: center;
+    font-size: 30px;
+    height: 50px;
+    line-height: 50px;
+    color: #999;
+    margin-top: 15px;
+}
+.loading span{
+    color: #233251;
+}
+.loadingGif{
+    width: 32px;
+    height: 32px;
+}

@@ -1,0 +1,26 @@
+#app{
+  padding: 40px;
+  overflow: hidden;
+}
+#menuContainer{
+  width: 200px;
+  float: left;
+}
+
+#editContainer{
+  margin-left: 200px;
+  overflow: hidden;
+}
+#window{
+  border: 1px solid #ccc;
+  float: left;
+}
+#editItems{
+  overflow: hidden;
+}
+
+
+/* bugfix for element-ui */
+[class*=" el-icon-"], [class^=el-icon-] {
+  line-height: inherit !important;
+}
