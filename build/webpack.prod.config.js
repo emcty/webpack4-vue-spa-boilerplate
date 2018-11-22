@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpackBaseConfig = require('./webpack.base.config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const config = require("./config");
 
 
@@ -29,6 +30,7 @@ module.exports = merge.smart(webpackBaseConfig, {
         minifyJS: true
       }
     }),
+    new OptimizeCssAssetsPlugin()
   ],
   module: {
     rules: [

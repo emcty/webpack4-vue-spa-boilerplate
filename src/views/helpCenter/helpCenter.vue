@@ -9,7 +9,7 @@
                 </ul>
             </nav>
         </header>
-        <div class="headDiv"></div>
+        <div class="headDiv"><img src="./images/2.jpeg" alt=""></div>
         <section>
             <ul >
                 <li>
