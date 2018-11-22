@@ -7,6 +7,7 @@
 </script>
 
 <style>
+@import url('./styles/base.css');
  .page-container{
    background: red;
    width: 500px;

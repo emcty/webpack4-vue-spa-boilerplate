@@ -14,10 +14,12 @@ module.exports = merge(webpackBaseConfig, {
       ]
   },
   mode: 'development',
-  cache: true,
   devtool: 'cheap-module-inline-source-map',
   devServer: {
     open: false,
+    clientLogLevel: 'warning',
+    publicPath: '/',
+    contentBase: path.resolve(__dirname,'../src'),
     port: config.port,
     host: 'localhost',
     inline: true,

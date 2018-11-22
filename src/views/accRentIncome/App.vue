@@ -3,7 +3,7 @@
         <div class="rentBox">
             <div class="rentDiv">
                 <p class="rentMoney ttfd-num">{{amount}}</p>
-                <p class="rentText">累计租金收入 (元)</p>
+                <p class="rentText"><img src="./images/arrow.png">累计租金收入 (元)</p>
                 <ul>
                     <li>
                         <p class="weekMoney ttfd-num"></p>
@@ -21,7 +21,6 @@
 </template>
 <script>
 
-
 	export default {
 	    name:"accRentIncome",
 	    data() {
@@ -38,10 +37,9 @@
 	    },
 	}
 </script>
-<style>
-/* @import url('./postcss.css'); */
-@import url('./accRentIncome.scss');
-/* @import url( '../../styles/base.css'); */
+<style scoped>
+@import url('./postcss.css');
+/* @import url('./accRentIncome.scss'); */
 </style>
 
 

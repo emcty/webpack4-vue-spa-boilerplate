@@ -8,7 +8,6 @@ const webpackBaseConfig = require('./webpack.base.config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const config = require("./config");
-const postcssLoader = require('./postcss-loader.config');
 
 
 module.exports = merge.smart(webpackBaseConfig, {
