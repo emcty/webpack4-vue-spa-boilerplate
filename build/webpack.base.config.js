@@ -29,7 +29,6 @@ module.exports = {
     hints: false
   },
   optimization: {
-    namedModules: true,
     runtimeChunk: {
       name: 'manifest'
     },

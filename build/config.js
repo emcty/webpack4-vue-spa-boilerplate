@@ -8,6 +8,8 @@ module.exports = {
     modules: [
       'babel-polyfill',
       'axios',
+      'vue',
+      'vuex',
       'vue-router',
     ]
   },

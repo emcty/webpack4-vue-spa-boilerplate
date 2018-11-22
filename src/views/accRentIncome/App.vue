@@ -20,7 +20,9 @@
     </div>
 </template>
 <script>
-
+import axios from 'axios';
+import Vue from 'vue';
+import {Row,Col} from 'element-ui';
 	export default {
 	    name:"accRentIncome",
 	    data() {

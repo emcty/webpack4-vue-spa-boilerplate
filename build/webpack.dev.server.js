@@ -13,6 +13,9 @@ module.exports = merge(webpackBaseConfig, {
       'webpack/hot/only-dev-server'
       ]
   },
+  optimization:{
+    namedModules: true,
+  },
   mode: 'development',
   devtool: 'cheap-module-inline-source-map',
   devServer: {

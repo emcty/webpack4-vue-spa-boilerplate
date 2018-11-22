@@ -8,11 +8,15 @@ const webpackBaseConfig = require('./webpack.base.config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const DllReferencePlugin = require('webpack/lib/DllReferencePlugin');
 const config = require("./config");
 
 
 module.exports = merge.smart(webpackBaseConfig, {
   mode: 'production',
+  optimization:{
+    hashedModuleIds:true,
+  },
   plugins: [
     new CleanWebpackPlugin([config.outputBase], {
       root: path.resolve('./'),
@@ -30,7 +34,10 @@ module.exports = merge.smart(webpackBaseConfig, {
         minifyJS: true
       }
     }),
-    new OptimizeCssAssetsPlugin()
+    new OptimizeCssAssetsPlugin(),
+    // new DllReferencePlugin({
+    //   manifest: require(path.resolve(__dirname, '../node_modules/__vue-vendor-bundle__', 'vendor.json'))
+    // })
   ],
   module: {
     rules: [

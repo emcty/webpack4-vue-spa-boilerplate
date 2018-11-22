@@ -4,7 +4,8 @@
   "description": "一个基于webpack4,vue的spa的脚本构建",
   "main": "index.js",
   "scripts": {
-    "build:vendor": "cross-env NODE_ENV=development webpack --config build/webpack.vendor.config.js --progress --hide-modules --display-optimization-bailout",
+    "postinstall": "cross-env NODE_ENV=development npm run build:vendor",
+    "build:vendor": "webpack --config build/webpack.vendor.config.js --progress --hide-modules --display-optimization-bailout",
     "dev": "webpack-dev-server --config build/webpack.dev.server.js",
     "build": "webpack --config build/webpack.prod.config.js --hide-modules --display-optimization-bailout"
   },
@@ -47,6 +48,7 @@
     "babel-polyfill": "^6.26.0",
     "element-ui": "^2.4.8",
     "vue": "^2.5.17",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   }
 }

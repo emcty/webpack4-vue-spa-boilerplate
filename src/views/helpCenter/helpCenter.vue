@@ -27,6 +27,8 @@
 
 <script>
 import axios from 'axios';
+import Vue from 'vue';
+import {Row,Col} from 'element-ui';
     export default {
         name: "helpCenter",
         data() {
@@ -51,17 +53,26 @@ import axios from 'axios';
                 url: "/wap/open/helpCenter",
             }
         },
-        created() {
-          console.log("created");
+        async created() {
+          await this.getData();
+          console.log(4);
         },
         mounted() {
-
+   
         },
         methods: {
+          getData(){
+            return new Promise((reslove,reject)=>{
+              setTimeout(()=>{
+                let a = [1,2,3,4].includes(4);
+                console.log(a);
+                reslove();
+              },3000)
+            });
+          }
         }
     }
 </script>
-
 <style>
     html,body {
         width: 100%;
@@ -73,7 +84,7 @@ import axios from 'axios';
         letter-spacing: 0px;
     }
     .help-wrap {
-        width: 100%;
+        width: 80%;
         header {
             nav {
                 ul {
