@@ -8,9 +8,8 @@ const webpackBaseConfig = require('./webpack.base.config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const DllReferencePlugin = require('webpack/lib/DllReferencePlugin');
 const config = require("./config");
-
+const vendorManifestPath = path.resolve(config.vendor.path, 'vendor.json');
 
 module.exports = merge.smart(webpackBaseConfig, {
   mode: 'production',
@@ -35,9 +34,10 @@ module.exports = merge.smart(webpackBaseConfig, {
       }
     }),
     new OptimizeCssAssetsPlugin(),
-    // new DllReferencePlugin({
-    //   manifest: require(path.resolve(__dirname, '../node_modules/__vue-vendor-bundle__', 'vendor.json'))
-    // })
+    new webpack.DllReferencePlugin({
+      context: process.cwd(),
+      manifest: require(vendorManifestPath)
+    }),
   ],
   module: {
     rules: [

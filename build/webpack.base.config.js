@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const config = require('./config');
 
 module.exports = {
   cache: true, 
@@ -30,7 +31,7 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: {
-      name: 'manifest'
+      name: 'webpack-runtime'
     },
     splitChunks:{
       chunks: 'async',
@@ -45,7 +46,7 @@ module.exports = {
           minChunks: 2
         },
         vendor: {
-          name: 'vendor',
+          name: 'common',
           chunks: 'initial',
           minChunks: 2,
           priority: 10,
@@ -58,8 +59,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: "[name].[hash:10].css",
-      chunkFilename: "[name].[hash:10].css"
+      filename: "[name].[contenthash:10].css"
     }),
   ],
   module: {
