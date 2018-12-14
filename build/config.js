@@ -2,7 +2,7 @@
 
 module.exports = {
   outputBase: './dist',
-  port: 8091,
+  port: 8099,
   vendor: {
     path: './node_modules/__vue-vendor-bundle__',
     modules: [

@@ -41,7 +41,7 @@ import {Row,Col} from 'element-ui';
 </script>
 <style scoped>
 @import url('./postcss.css');
-/* @import url('./accRentIncome.scss'); */
+
 </style>
 
 
