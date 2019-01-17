@@ -5,8 +5,13 @@ const webpack = require('webpack');
 const WebpackDevServer = require("webpack-dev-server");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('./config');
+const SetGlobalVariable = require("./plugins");
 
-module.exports = merge(webpackBaseConfig, {
+
+module.exports = merge.smartStrategy({
+  entry: 'prepend',
+  plugins: 'prepend'
+})(webpackBaseConfig, {
   entry: {
     main: [
       'webpack-dev-server/client?/',
@@ -23,15 +28,15 @@ module.exports = merge(webpackBaseConfig, {
     clientLogLevel: 'warning',
     publicPath: '/',
     contentBase: path.resolve(__dirname,'../src'),
-    port: config.port,
-    host: 'localhost',
+    port: config.dev.port,
+    host: '0.0.0.0',
     inline: true,
     historyApiFallback: {
       index: '/'
     },
     hot: true,
     compress: true,
-    proxy: config.proxy
+    proxy: config.dev.proxy
   },
   module: {
     rules: [
@@ -55,7 +60,15 @@ module.exports = merge(webpackBaseConfig, {
                   require('postcss-cssnext')(), 
               ]
             }
-          }
+          },
+        ]
+      },
+      {
+        test: /\.styl/,
+        use: [
+            'style-loader',
+            'css-loader',
+            'stylus-loader'
         ]
       },
       {
@@ -99,6 +112,8 @@ module.exports = merge(webpackBaseConfig, {
       filename: 'index.html',
       chunksSortMode: 'dependency',
     }),
+    new SetGlobalVariable(),
+    
   ]
 });
 

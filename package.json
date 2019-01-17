@@ -6,13 +6,16 @@
   "scripts": {
     "postinstall": "cross-env NODE_ENV=development npm run build:vendor",
     "build:vendor": "webpack --config build/webpack.vendor.config.js --progress --hide-modules --display-optimization-bailout",
-    "dev": "webpack-dev-server --config build/webpack.dev.server.js",
-    "build": "webpack --config build/webpack.prod.config.js --hide-modules --display-optimization-bailout"
+    "dev": "webpack-dev-server --config build/webpack.dev.server.js  --cwd=./ --development & npm run mock",
+    "mock": "nodemon --watch mock build/mock.server.js",
+    "test": "cross-env NODE_ENV=production webpack --config build/webpack.prod.config.js --hide-modules --display-optimization-bailout --test",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.config.js --hide-modules --display-optimization-bailout --production"
   },
   "keywords": [],
   "author": "dinglei",
   "license": "ISC",
   "devDependencies": {
+    "add-asset-html-webpack-plugin": "^3.1.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-component": "^1.1.1",
@@ -35,6 +38,8 @@
     "postcss-loader": "^3.0.0",
     "precss": "^3.1.2",
     "style-loader": "^0.22.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "url-loader": "^1.1.1",
     "vue-loader": "^15.4.2",
     "vue-template-compiler": "^2.5.17",

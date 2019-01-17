@@ -7,9 +7,9 @@ module.exports = {
     vendor: config.vendor.modules
   },
   output: {
-    filename: '[name]_dll_[chunkhash:10].js',
+    filename: '[name]_dll.js',
     path: path.resolve(config.vendor.path),
-    library: '[name]_dll_[chunkhash:10]'
+    library: '[name]_dll_library'
   },
   mode: process.env.NODE_ENV,
   performance: {
@@ -19,7 +19,7 @@ module.exports = {
     new webpack.DllPlugin({
       context: process.cwd(),
       path: path.join(config.vendor.path, '[name].json'),
-      name: '[name]_dll_[chunkhash:10]'
+      name: '[name]_dll_library'
     }),
     new webpack.HashedModuleIdsPlugin()
   ]

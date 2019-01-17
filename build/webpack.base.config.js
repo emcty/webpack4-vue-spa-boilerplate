@@ -5,6 +5,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const config = require('./config');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+
+const vendorManifestPath = path.resolve(config.vendor.path, 'vendor.json');
+const vendorPath = path.resolve(config.vendor.path, 'vendor_dll.js');
+
 
 module.exports = {
   cache: true, 
@@ -17,14 +22,19 @@ module.exports = {
   output: {
     path: path.resolve("./dist"),
     filename: '[name].[hash:10].js', 
-    chunkFilename: '[name].chunk.js'
+    chunkFilename: 'js/[name].chunk.js'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     modules: [
       path.resolve('./src'),
       path.resolve('node_modules')
-    ]
+    ],
+    alias: {
+      'src': path.resolve(__dirname, '../src'),
+      'assets': path.resolve(__dirname, '../src/assets'),
+      'components': path.resolve(__dirname, '../src/components')
+    }
   },
   performance: {
     hints: false
@@ -59,8 +69,16 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash:10].css"
+      filename: "css/[name].[contenthash:10].css"
     }),
+    new webpack.DllReferencePlugin({
+      context: process.cwd(),
+      manifest: require(vendorManifestPath)
+    }),
+    new AddAssetHtmlPlugin({
+      filepath: vendorPath,
+      includeSourcemap: false
+    })
   ],
   module: {
     rules: [
@@ -71,4 +89,10 @@ module.exports = {
       },
     ]
   },
-}
+};
+
+
+
+
+
+

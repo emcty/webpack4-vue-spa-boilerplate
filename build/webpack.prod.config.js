@@ -9,9 +9,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const config = require("./config");
-const vendorManifestPath = path.resolve(config.vendor.path, 'vendor.json');
+const SetGlobalVariable = require("./plugins");
 
-module.exports = merge.smart(webpackBaseConfig, {
+
+module.exports = merge.smartStrategy({
+  entry: 'prepend',
+  plugins: 'prepend'
+})(webpackBaseConfig, {
   mode: 'production',
   optimization:{
     hashedModuleIds:true,
@@ -33,18 +37,21 @@ module.exports = merge.smart(webpackBaseConfig, {
         minifyJS: true
       }
     }),
+    new SetGlobalVariable(),
     new OptimizeCssAssetsPlugin(),
-    new webpack.DllReferencePlugin({
-      context: process.cwd(),
-      manifest: require(vendorManifestPath)
-    }),
+
   ],
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [
-          {loader: MiniCssExtractPlugin.loader}, 
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../'
+            }
+          }, 
           {
             loader: `css-loader`,
             options: {
@@ -61,7 +68,15 @@ module.exports = merge.smart(webpackBaseConfig, {
                   require('postcss-cssnext')(), 
               ]
             }
-          }
+          },
+        ]
+      },
+      {
+        test: /\.styl/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'stylus-loader'
         ]
       },
       {
@@ -89,7 +104,7 @@ module.exports = merge.smart(webpackBaseConfig, {
               loader: 'url-loader',
               options: {
                 limit: 10000,
-                name: '[name]-[hash:10].[ext]'
+                name: 'images/[name]-[hash:10].[ext]'
               }
             },
             {
