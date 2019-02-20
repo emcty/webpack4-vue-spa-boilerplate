@@ -50,15 +50,17 @@ module.exports = {
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
       name: false,
+      //这一块需要再研究研究
       cacheGroups: {
         common: {
           chunks: 'initial',
-          minChunks: 2
+          minChunks: 2 //为1时则加载不了业务代码所需要的js （有可能受上面的minChunks影响）
         },
         vendor: {
           name: 'common',
           chunks: 'initial',
-          minChunks: 2,
+          minSize: 0,
+          minChunks: 2, //为1时则会再生成common.chunk.js文件
           priority: 10,
           reuseExistingChunk: false,
           test: /node_modules\/(.*)\.js/
