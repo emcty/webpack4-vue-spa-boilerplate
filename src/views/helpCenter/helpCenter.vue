@@ -26,53 +26,19 @@
 </template>
 
 <script>
-import axios from 'axios';
-import Vue from 'vue';
-import {Row,Col} from 'element-ui';
     export default {
         name: "helpCenter",
         data() {
             return {
-                startIndex: 0,
-                listType : ['ttfd', 'zrzc', 'wd', 'syjs'],
-                tabCont: [
-                    {
-                        name: "产品解释"
-                    },
-                    {
-                        name: "转入转出"
-                    },
-                    {
-                        name: "我的"
-                    },
-                    {
-                        name: "收入计算"
-                    }
-                ],
-                content: {},
-                url: "/wap/open/helpCenter",
+              a: 1
             }
         },
-        async created() {
-          await this.getData();
-          console.log(4);
+        created() {
         },
         mounted() {
    
         },
         methods: {
-          getData(){
-            return new Promise((reslove,reject)=>{
-              setTimeout(()=>{
-                let a = [1,2,3,4].includes(4);
-                console.log(a);
-                reslove();
-              },3000)
-            });
-          }
         }
     }
 </script>
-<style>
-
-</style>

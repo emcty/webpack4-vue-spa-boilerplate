@@ -8,9 +8,14 @@ export default new Router({
     mode: 'history',
     routes: [
       {
-        path: '/accRentIncome',
-        name: 'accRentIncome',
-        component: ()=>import("../views/accRentIncome/App.vue")
+        path: '/',
+        name: 'home',
+        component: ()=>import("../views/home/App.vue")
+      },
+      {
+        path: '/cssModule',
+        name: 'cssModule',
+        component: ()=>import("../views/cssModule/App.vue")
       },
       {
         path: '/helpCenter',

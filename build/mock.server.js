@@ -5,8 +5,8 @@ const path = require('path');
 const requireDir = require('require-dir');
 const app = express();
 const router = express.Router();
-const config = require('./config').dev.mock;
-const port = config.port;
+const config = require('./config');
+const port = config.mock.port;
 const serverApi = require('../mock/api');
 
 serverApi(router);

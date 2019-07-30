@@ -7,7 +7,7 @@
                 <ul>
                     <li>
                         <p class="weekMoney ttfd-num"></p>
-                        <p class="rentText">近一周租金收入 (元)</p>
+                        <p :class="$style.red">近一周租金收入 (元)</p>
                     </li>
                     <li>
                         <p class="weekMoney ttfd-num"></p>
@@ -39,7 +39,7 @@ import {Row,Col} from 'element-ui';
 	    },
 	}
 </script>
-<style scoped>
+<style module>
 @import url('./postcss.css');
 
 </style>

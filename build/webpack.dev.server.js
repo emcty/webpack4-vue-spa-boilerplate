@@ -49,7 +49,10 @@ module.exports = merge.smartStrategy({
             loader: `css-loader`,
             options: {
               sourceMap: true,
-              minimize: true  
+              minimize: true,
+              modules: true,//支持css module
+              importLoaders: 1,
+              localIdentName: '[local]_[hash:base64:8]'
             }
           },
           {
